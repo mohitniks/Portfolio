@@ -562,6 +562,22 @@ type();
     star.style.animationDelay = `${Math.random() * 5}s`;
     starsContainer.appendChild(star);
   }
+
+  const skillContainers = document.querySelectorAll('.skill-container');
+
+// Add event listener for scroll on each skill container
+skillContainers.forEach(container => {
+    container.addEventListener('scroll', function(event) {
+        // Check if the container has reached the bottom
+        if (container.scrollHeight - container.scrollTop === container.clientHeight) {
+            // If reached bottom, prevent further scroll on container
+            container.style.overflowY = 'hidden';
+        } else {
+            // If not reached bottom, allow scrolling on container
+            container.style.overflowY = 'auto';
+        }
+    });
+});
 </script>
 </body>
 </html>
