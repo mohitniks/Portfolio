@@ -496,12 +496,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     skillContainers.forEach(container => {
         container.addEventListener('scroll', function() {
-            // Check if the container has reached the bottom
-            if (container.scrollHeight - container.scrollTop <= container.clientHeight) {
-                // Reached or passed the bottom, allow page scrolling
+            // Calculate the distance from the bottom of the container
+            const distanceFromBottom = container.scrollHeight - (container.scrollTop + container.clientHeight);
+            
+            // Check if the container is at the bottom or beyond
+            if (distanceFromBottom <= 0) {
+                // At or beyond the bottom, hide the scrollbar
                 container.style.overflowY = 'hidden';
             } else {
-                // Not at the bottom, continue normal scrolling within container
+                // Not at the bottom, show the scrollbar
                 container.style.overflowY = 'auto';
             }
         });
