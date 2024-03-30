@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Portfolio Website</title>
 <style>
-  /* Common styles */
   body {
     margin: 0;
     padding: 0;
@@ -15,15 +14,7 @@
     font-family: Arial, sans-serif;
   }
 
-  .container {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .section {
-    padding: 100px 0;
-  }
-
+  /* Navigation styles */
   .nav {
     position: fixed;
     top: 20px;
@@ -33,6 +24,9 @@
     text-align: center;
     white-space: nowrap;
     overflow-x: auto;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   .nav a {
@@ -47,23 +41,138 @@
     padding: 2px;
   }
 
-  /* Responsive styles */
-  @media only screen and (max-width: 768px) {
+  /* Moon styles */
+  .moon {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: revolving 10s infinite linear;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 10px #ffbd60, inset 0 0 20px 10px #f89f32;
+    margin-top: 5%;
+  }
+
+  .moon-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .moon-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Astronaut styles */
+  .astronaut {
+    position: absolute;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: auto;
+    background-image: url('path/to/your/astronaut-image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: floatAstronaut 10s linear infinite;
+  }
+
+  /* Typing text styles */
+  .typing-text {
+    font-size: 24px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  /* Skill containers styles */
+  .skill-container {
+    width: calc(100% / 2 - 20px);
+    height: auto;
+    border: 2px solid #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 20px 0;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  /* Skill symbol styles */
+  .skill-symbol {
+    font-size: 24px;
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .skill-symbol img {
+    font-size: inherit;
+    max-height: 25%;
+    max-width: 25%;
+  }
+
+  /* Custom font style */
+  .unique-font {
+    font-family: 'Stencil', cursive;
+    font-size: 75px;
+    color: transparent;
+    -webkit-text-stroke: 2px #d2d2d2;
+    position: absolute;
+    bottom: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 768px) {
     .skill-container {
-      width: calc(100% - 40px);
-      margin: 0 auto 20px auto;
+      width: calc(100% - 20px);
     }
   }
 
-  @media only screen and (max-width: 480px) {
-    .section {
-      padding: 50px 0;
-    }
+  @keyframes revolving {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+  }
 
-    .skill-container {
-      width: calc(100% - 20px);
-      margin: 0 auto 20px auto;
-    }
+  @keyframes floatAstronaut {
+    0% { left: -100px; }
+    50% { left: calc(50% - 50px); }
+    100% { left: calc(100% + 100px); }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
   }
 </style>
 </head>
@@ -74,22 +183,13 @@
   <a href="#projects">PROJECTS</a>
   <a href="#contact">CONTACT</a>
 </div>
-
-<div class="stars">
-  <!-- Stars will be generated dynamically using JavaScript -->
-</div>
-
 <div class="moon">
-    <div class="moon-image">
-        <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
-    </div>
+  <div class="moon-image">
+    <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
+  </div>
 </div>
-
 <div class="astronaut"></div>
-
-<div class="unique-font" id="uniqueFont">
-  MOHIT NIKHADE
-</div>
+<div class="unique-font" id="uniqueFont">MOHIT NIKHADE</div>
 <div class="typing-text" id="typingText"></div>
 
 <div id="about" class="section">
@@ -106,96 +206,50 @@
       <div class="skill-container">
         <h3>FRONTEND</h3>
         <p>
-          <span class="skill-symbol"><img src="react-js-480.png" alt="React JS Icon">&nbsp;&nbsp;React JS</span>
-          <br><span class="skill-symbol"><img src="vue-js-480.png" alt="VueJs Icon">&nbsp;&nbsp;Vue.js</span>
-          <br><span class="skill-symbol"><img src="javascript-480.png" alt="Javascript Icon">&nbsp;&nbsp;Javascript</span>
-          <br><span class="skill-symbol"><img src="html-480.png" alt="HTML Icon">&nbsp;&nbsp;HTML</span>
-          <br><span class="skill-symbol"><img src="css-480.png" alt="CSS Icon">&nbsp;&nbsp;CSS</span>
+          <span class="skill-symbol"><img src="E:/Porfolio/react-js-480.png" alt="React JS Icon">&nbsp;&nbsp;React JS</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/vue-js-480.png" alt="VueJs Icon">&nbsp;&nbsp;Vue.js</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/javascript-480.png" alt="Javascript Icon">&nbsp;&nbsp;Javascript</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/html-480.png" alt="HTML Icon">&nbsp;&nbsp;HTML</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/css-480.png" alt="CSS Icon">&nbsp;&nbsp;CSS</span>
         </p>
       </div>
       <div class="skill-container">
         <h3>BACKEND</h3>
         <p>
-          <span class="skill-symbol"><img src="node-js-480.png" alt="Nodejs Icon">&nbsp;&nbsp;Nodejs JS</span>
-          <br><span class="skill-symbol"><img src="flask-480.png" alt="flask Icon">&nbsp;&nbsp;Flask</span>
-          <br><span class="skill-symbol"><img src="java-480.png" alt="java Icon">&nbsp;&nbsp;Java</span>
+          <span class="skill-symbol"><img src="E:/Porfolio/node-js-480.png" alt="Nodejs Icon">&nbsp;&nbsp;Nodejs JS</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/flask-480.png" alt="flask Icon">&nbsp;&nbsp;Flask</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/java-480.png" alt="java Icon">&nbsp;&nbsp;Java</span>
         </p>
       </div>
       <div class="skill-container">
         <h3>DATABASE</h3>
         <p>
-          <span class="skill-symbol"><img src="my-sql-480.png" alt="MySQL Icon">&nbsp;&nbsp;My SQL</span>
-          <br><span class="skill-symbol"><img src="mssql-480.png" alt="MSSQL Icon">&nbsp;&nbsp;MS-SQL</span>
+          <span class="skill-symbol"><img src="E:/Porfolio/my-sql-480.png" alt="MySQL Icon">&nbsp;&nbsp;My SQL</span>
+          <br><span class="skill-symbol"><img src="E:/Porfolio/mssql-480.png" alt="MSSQL Icon">&nbsp;&nbsp;MS-SQL</span>
         </p>
       </div>
       <div class="skill-container">
         <h3>MACHINE LEARNING</h3>
         <p>
-          <span class="skill-symbol"><img src="scikit-learn-480.png" alt="Scikit learn ">&nbsp;&nbsp;Scikit learn</span>
-          <span class="skill-symbol"><img src="numpy-480.png" alt="Numpy Icon">&nbsp;&nbsp;Numpy</span>
-          <span class="skill-symbol"><img src="pandas-480.png" alt="Pandas Icon">&nbsp;&nbsp;Pandas</span>
-          <span class="skill-symbol"><img src="polars-480.png" alt="Polars Icon">&nbsp;&nbsp;Polars</span>
-          <span class="skill-symbol"><img src="modin-480.png" alt="Modin Icon">&nbsp;&nbsp;Modin</span>
-          <span class="skill-symbol"><img src="cupy-480.png" alt="CuPy Icon">&nbsp;&nbsp;CuPy</span>
-          <span class="skill-symbol"><img src="datatable-480.png" alt="Datatable Icon">&nbsp;&nbsp;Datatable</span>
-          <span class="skill-symbol"><img src="prophet-480.png" alt="Prophet Icon">&nbsp;&nbsp;Prophet</span>
-          <span class="skill-symbol"><img src="python-480.png" alt="ARIMA Icon">&nbsp;&nbsp;ARIMA</span>
-          <span class="skill-symbol"><img src="python-480.png" alt="SARIMA Icon">&nbsp;&nbsp;SARIMA</span>
-          <span class="skill-symbol"><img src="darts-480.png" alt="Darts Icon">&nbsp;&nbsp;Darts</span>
-          <span class="skill-symbol"><img src="kats-480.png" alt="Kats Icon">&nbsp;&nbsp;Kats</span>
-          <span class="skill-symbol"><img src="autots-480.png" alt="AutoTs Icon">&nbsp;&nbsp;AutoTs</span>
-          <span class="skill-symbol1"><img src="sktime-480.png" alt="Sktime Icon">&nbsp;&nbsp;Sktime</span>
-          <span class="skill-symbol"><img src="python-480.png" alt="LSTM Icon">&nbsp;&nbsp;LSTM</span>
-          <span class="skill-symbol"><img src="xgboost-480.png" alt="XGBoost Icon">&nbsp;&nbsp;XGBoost</span>
+          <!-- Add your machine learning skills here -->
         </p>
       </div>
       <div class="skill-container">
-        <h3>DEEP LEARNING </h3>
+        <h3>DEEP LEARNING</h3>
         <p>
-          <span class="skill-symbol"><img src="tensorflow-480.png" alt="Tensorflow Icon">&nbsp;&nbsp;Tensorflow</span>
-          <span class="skill-symbol"><img src="pytorch-480.png" alt="Pytorch Icon">&nbsp;&nbsp;Pytorch</span>
-          <span class="skill-symbol"><img src="keras-480.png" alt="Keras Icon">&nbsp;&nbsp;Keras</span>
-          <span class="skill-symbol"><img src="jax-480.png" alt="JAX Icon">&nbsp;&nbsp;JAX</span>
-          <span class="skill-symbol"><img src="neuralnetwork-480.png" alt="Neural Network Icon">&nbsp;&nbsp;Neural Networks</span>
-          <span class="skill-symbol"><img src="opencv-480.png" alt="OpenCV Icon">&nbsp;&nbsp;OpenCV</span>
-          <span class="skill-symbol"><img src="yolo-480.png" alt="YOLO Icon">&nbsp;&nbsp;YOLO</span>
-          <span class="skill-symbol"><img src="ultralytics-480.png" alt="Ultralytics YOLOv8 Icon">&nbsp;&nbsp;Ultralytics</span>
+          <!-- Add your deep learning skills here -->
         </p>
       </div>
       <div class="skill-container">
         <h3>DATA SCIENCE</h3>
         <p>
-            <span class="skill-symbol"><img src="selenium-480.png" alt="Selenium Icon">&nbsp;&nbsp;Selenium</span>
-            <span class="skill-symbol"><img src="beautifulsoup-480.png" alt="Beautifulsoup Icon">&nbsp;&nbsp;Beautifulsoup</span>
-            <span class="skill-symbol"><img src="scrapy-480.png" alt="ScrapyS Icon">&nbsp;&nbsp;Scrapy</span>
-            <span class="skill-symbol"><img src="octoparse-480.png" alt="Octoparse Icon">&nbsp;&nbsp;Octoparse</span>
-            <span class="skill-symbol1"><img src="scipy-480.png" alt="Scrapy Icon">&nbsp;&nbsp;&nbsp;Scipy</span>
-            <span class="skill-symbol"><img src="matplotlib-480.png" alt="Matplotlib Icon">&nbsp;Matplotlib</span>
-            <span class="skill-symbol"><img src="plotly-480.png" alt="Plotly Icon">&nbsp;&nbsp;Plotly</span>
-            <span class="skill-symbol"><img src="seaborn-480.png" alt="Seaborn Icon">&nbsp;&nbsp;Seaborn</span>
-            <span class="skill-symbol"><img src="altair-480.png" alt="Altair Icon">&nbsp;&nbsp;Altair</span>
-            <span class="skill-symbol"><img src="folium-480.png" alt="Folium Icon">&nbsp;&nbsp;Folium</span>
-            <span class="skill-symbol"><img src="hadoop-480.png" alt="Hadoop Icon">&nbsp;Hadoop</span>
-            <span class="skill-symbol"><img src="kafka-480.png" alt="Kafka Icon">&nbsp;Kafka</span>
-            <span class="skill-symbol"><img src="spark-480.png" alt="PySpark Icon">&nbsp;PySpark</span>
-            <span class="skill-symbol1"><img src="koalas-480.png" alt="Koalas Icon">&nbsp;&nbsp;Koalas</span>
-            <span class="skill-symbol"><img src="dask-480.png" alt="Dask Icon">&nbsp;&nbsp;Dask</span>
-            <span class="skill-symbol"><img src="ray-480.png" alt="RAY Icon">&nbsp;&nbsp;RAY</span>
-            <span class="skill-symbol"><img src="statsmodel-480.png" alt="Statsmodel Icon">&nbsp;&nbsp;Statsmodel</span>
-            <span class="skill-symbol"><img src="pingouin-480.png" alt="Pingouin Icon">&nbsp;&nbsp;&nbsp;&nbsp;Pingouin</span>
-            <span class="skill-symbol"><img src="pystan-480.png" alt="PyStan Icon">&nbsp;&nbsp;PyStan</span>
-            <span class="skill-symbol"><img src="pymc3-480.png" alt="PyMC3 Icon">&nbsp;&nbsp;PyMC3</span>
-
+          <!-- Add your data science skills here -->
         </p>
       </div>
       <div class="skill-container">
         <h3>NLP</h3>
         <p>
-            <span class="skill-symbol"><img src ="nltk-480.png" alt="NLTK Icon">&nbsp;&nbsp;NLTK</span>
-            <span class="skill-symbol"><img src="gensim-480.png" alt="Gensim Icon">&nbsp;&nbsp;Gensim</span>
-            <span class="skill-symbol"><img src="spacy-480.png" alt="SPACY Icon">&nbsp;&nbsp;spaCy</span>
-            <span class="skill-symbol"><img src="textblob-480.png" alt="Textblob Icon">&nbsp;&nbsp;TextBlob</span>
-            <span class="skill-symbol"><img src="polyglot-480.png" alt="Polyglot Icon">&nbsp;&nbsp;Polyglot</span>
+          <!-- Add your NLP skills here -->
         </p>
       </div>
     </div>
@@ -217,54 +271,54 @@
 </div>
 
 <script>
-const textElements = [
+  const textElements = [
     "Full Stack Developer",
     "Data Science",
     "Machine Learning",
     "Full Stack Developer | Data Science | Machine Learning"
-];
+  ];
 
-let currentTextIndex = 0;
-let currentText = '';
-let letterIndex = 0;
+  let currentTextIndex = 0;
+  let currentText = '';
+  let letterIndex = 0;
 
-function type() {
+  function type() {
     if (letterIndex < currentText.length) {
-        document.getElementById('typingText').textContent += currentText.charAt(letterIndex);
-        letterIndex++;
-        setTimeout(type, 100);
+      document.getElementById('typingText').textContent += currentText.charAt(letterIndex);
+      letterIndex++;
+      setTimeout(type, 100);
     } else {
-        setTimeout(erase, 1500);
+      setTimeout(erase, 1500);
     }
-}
+  }
 
-function erase() {
+  function erase() {
     if (letterIndex >= 0) {
-        document.getElementById('typingText').textContent = currentText.substring(0, letterIndex);
-        letterIndex--;
-        setTimeout(erase, 50);
+      document.getElementById('typingText').textContent = currentText.substring(0, letterIndex);
+      letterIndex--;
+      setTimeout(erase, 50);
     } else {
-        currentTextIndex = (currentTextIndex + 1) % textElements.length;
-        currentText = textElements[currentTextIndex];
-        setTimeout(type, 500);
+      currentTextIndex = (currentTextIndex + 1) % textElements.length;
+      currentText = textElements[currentTextIndex];
+      setTimeout(type, 500);
     }
-}
+  }
 
-// Start typing animation
-type();
+  // Start typing animation
+  type();
 
-// Dynamically create stars
-const starsContainer = document.querySelector('.stars');
-for (let i = 0; i < 100; i++) {
-  const star = document.createElement('div');
-  star.classList.add('star');
-  star.style.left = `${Math.random() * 100}vw`;
-  star.style.top = `${Math.random() * 100}vh`;
-  star.style.width = `${Math.random() * 3}px`;
-  star.style.height = star.style.width;
-  star.style.animationDelay = `${Math.random() * 5}s`;
-  starsContainer.appendChild(star);
-}
+  // Dynamically create stars
+  const starsContainer = document.querySelector('.stars');
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    star.style.width = `${Math.random() * 3}px`;
+    star.style.height = star.style.width;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    starsContainer.appendChild(star);
+  }
 </script>
 </body>
 </html>
