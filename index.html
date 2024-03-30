@@ -14,34 +14,24 @@
     font-family: Arial, sans-serif;
   }
 
-  /* Navigation styles */
-  .nav {
+  .stars {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    text-align: center;
-    white-space: nowrap;
-    overflow-x: auto;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block;
-    border: 2px solid #888;
-    border-radius: 5px;
-    padding: 2px;
+  .star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: twinkling 5s infinite;
   }
 
-  /* Moon styles */
   .moon {
     position: relative;
     width: 150px;
@@ -53,11 +43,11 @@
     z-index: 1;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 0 0 20px 10px #ffbd60, inset 0 0 20px 10px #f89f32;
+    box-shadow: 0 0 20px 10px #ffbd60, inset 0 0 20px 10px #f89f32; /* Added box-shadow for glowing effect */
     margin-top: 5%;
-  }
+}
 
-  .moon-image {
+.moon-image {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -65,30 +55,54 @@
     left: 0;
     overflow: hidden;
     border-radius: 50%;
-  }
+}
 
-  .moon-image img {
+.moon-image img {
     width: 100%;
     height: auto;
     display: block;
-  }
+}
 
-  /* Astronaut styles */
-  .astronaut {
+@keyframes revolving {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+.star {
     position: absolute;
-    left: -100px;
-    top: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: twinkling 5s infinite;
+    box-shadow: 0 0 5px 2px #fff; /* Added box-shadow for twinkling effect */
+}
+
+.astronaut {
+    position: absolute;
+    left: -100px; /* Initial position off-screen to the left */
+    top: 50%; /* Adjust as needed */
     transform: translateY(-50%);
-    width: 100px;
+    width: 100px; /* Adjust width and height as needed */
     height: auto;
     background-image: url('path/to/your/astronaut-image.png');
     background-size: contain;
     background-repeat: no-repeat;
-    animation: floatAstronaut 10s linear infinite;
-  }
+    animation: floatAstronaut 10s linear infinite; /* Adjust animation duration as needed */
+}
 
-  /* Typing text styles */
-  .typing-text {
+@keyframes floatAstronaut {
+    0% {
+        left: -100px; /* Initial position off-screen to the left */
+    }
+    50% {
+        left: calc(50% - 50px); /* Halfway across the screen */
+    }
+    100% {
+        left: calc(100% + 100px); /* Fully across the screen */
+    }
+}
+
+.typing-text {
     font-size: 24px;
     color: #fff;
     font-family: Arial, sans-serif;
@@ -96,46 +110,67 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid white;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    border-right: 2px solid white; /* Typing cursor */
     animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-  }
+}
 
-  /* Skill containers styles */
-  .skill-container {
-    width: calc(100% / 2 - 20px);
-    height: auto;
-    border: 2px solid #fff;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 10px 20px 0;
-    padding: 10px;
-    text-align: left;
+/* Blinking cursor animation */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+}
+
+/* Typing animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.section {
+    padding: 100px 0;
+    margin-top: 100vh;
+}
+
+.nav {
+    position: fixed;
+    top: 20px;
+    left: 50%; /* Center the navigation horizontally */
+    transform: translateX(-50%); /* Adjust to center perfectly */
+    z-index: 999;
+    text-align: center;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px; /* Add margin between links */
+    font-size: 18px;
     font-weight: bold;
-    font-size: 30px;
-    line-height: 1.5;
-    position: relative;
-  }
+    display: inline-block; /* Ensure each link is on its own line */
+    border: 2px solid #888;
+    border-radius: 5px;
+    padding: 2px;
+}
 
-  /* Skill symbol styles */
-  .skill-symbol {
-    font-size: 24px;
-    margin-right: 5px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .skill-symbol img {
-    font-size: inherit;
-    max-height: 25%;
-    max-width: 25%;
-  }
-
-  /* Custom font style */
-  .unique-font {
+/* Custom font style */
+.unique-font {
     font-family: 'Stencil', cursive;
     font-size: 75px;
     color: transparent;
@@ -145,35 +180,116 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-  }
+}
 
-  /* Media queries for responsiveness */
-  @media screen and (max-width: 768px) {
+/* Skill symbols */
+.skill-symbol {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.skill-container h3 {
+    font-size: 24px; /* Set the font size for headings */
+    text-decoration: underline; /* Add underline */
+    text-align: center;
+    font-weight: bolder;
+    font-family: Elephant;
+    border: 2px solid #fff; /* Set the border color */
+}
+
+/* Skill containers */
+.skill-container {
+    width: calc(100% / 2 - 20px); /* Calculating width for 2 containers with margin */
+    height: 70vh;
+    border: 2px solid #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 20px 0; /* Adding margin between containers */
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.5; /* Adjust the line height as needed */
+    position: relative; /* Ensure position for pseudo-elements */
+}
+
+.skill-container::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+.skill-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+}
+
+.skill-container::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 5px; /* Roundness of the thumb */
+}
+
+.skill-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Thumb color on hover */
+}
+
+.skill-symbol {
+    font-size: 24px; /* Set the desired font size */
+    display: inline-flex; /* Ensures the <img> is treated as an inline element */
+    align-items: center; /* Aligns the content of the container vertically */
+}
+
+.skill-symbol img {
+    font-size: inherit; /* Inherits the font size from the parent (.skill-symbol) */
+    max-height: 25%; /* Ensures the icon does not exceed the height of the text */
+    max-width: 25%; /* Ensures the icon does not exceed the width of the text */
+}
+
+/* Within the CSS */
+.skill-symbol1 {
+    font-size: 24px; /* Set the desired font size */
+    display: inline-flex; /* Ensures the <img> is treated as an inline element */
+    align-items: center; /* Aligns the content of the container vertically */
+    margin-top: 10px;
+}
+
+.skill-symbol1 img {
+    font-size: inherit;
+    max-height: 25%; /* Ensures the icon does not exceed the height of the text */
+    max-width: 25%; /* Ensures the icon does not exceed the width of the text */
+    margin-top: 5px; /* Adjust the margin between the icon and text */
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust styles for tablets */
     .skill-container {
-      width: calc(100% - 20px);
+        width: calc(100% - 20px); /* Full width with margin */
     }
-  }
+}
 
-  @keyframes revolving {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    100% { transform: translateX(-50%) rotate(360deg); }
-  }
+@media screen and (max-width: 480px) {
+    /* Adjust styles for mobile */
+    .skill-container {
+        width: calc(100% - 20px); /* Full width with margin */
+    }
 
-  @keyframes floatAstronaut {
-    0% { left: -100px; }
-    50% { left: calc(50% - 50px); }
-    100% { left: calc(100% + 100px); }
-  }
+    .section {
+        padding: 50px 0; /* Reduce padding for sections */
+    }
 
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: white; }
-  }
+    .moon {
+        width: 100px;
+        height: 100px;
+        top: 5%;
+    }
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+    .astronaut {
+        width: 50px;
+    }
+
+    .unique-font {
+        font-size: 45px;
+    }
+}
 </style>
 </head>
 <body>
@@ -183,14 +299,23 @@
   <a href="#projects">PROJECTS</a>
   <a href="#contact">CONTACT</a>
 </div>
-<div class="moon">
-  <div class="moon-image">
-    <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
-  </div>
+<div class="stars">
+  <!-- Generate stars dynamically using JavaScript -->
 </div>
+<div class="moon">
+    <div class="moon-image">
+        <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
+    </div>
+</div>
+
 <div class="astronaut"></div>
-<div class="unique-font" id="uniqueFont">MOHIT NIKHADE</div>
+
+<!-- Container for MOHIT NIKHADE text -->
+<div class="unique-font" id="uniqueFont">
+  MOHIT NIKHADE
+</div>
 <div class="typing-text" id="typingText"></div>
+
 
 <div id="about" class="section">
   <div class="container">
@@ -316,41 +441,41 @@
 </div>
 
 <script>
-  const textElements = [
+const textElements = [
     "Full Stack Developer",
     "Data Science",
     "Machine Learning",
     "Full Stack Developer | Data Science | Machine Learning"
-  ];
+];
 
-  let currentTextIndex = 0;
-  let currentText = '';
-  let letterIndex = 0;
+let currentTextIndex = 0;
+let currentText = '';
+let letterIndex = 0;
 
-  function type() {
+function type() {
     if (letterIndex < currentText.length) {
-      document.getElementById('typingText').textContent += currentText.charAt(letterIndex);
-      letterIndex++;
-      setTimeout(type, 100);
+        document.getElementById('typingText').textContent += currentText.charAt(letterIndex);
+        letterIndex++;
+        setTimeout(type, 100);
     } else {
-      setTimeout(erase, 1500);
+        setTimeout(erase, 1500);
     }
-  }
+}
 
-  function erase() {
+function erase() {
     if (letterIndex >= 0) {
-      document.getElementById('typingText').textContent = currentText.substring(0, letterIndex);
-      letterIndex--;
-      setTimeout(erase, 50);
+        document.getElementById('typingText').textContent = currentText.substring(0, letterIndex);
+        letterIndex--;
+        setTimeout(erase, 50);
     } else {
-      currentTextIndex = (currentTextIndex + 1) % textElements.length;
-      currentText = textElements[currentTextIndex];
-      setTimeout(type, 500);
+        currentTextIndex = (currentTextIndex + 1) % textElements.length;
+        currentText = textElements[currentTextIndex];
+        setTimeout(type, 500);
     }
-  }
+}
 
-  // Start typing animation
-  type();
+// Start typing animation
+type();
 
   // Dynamically create stars
   const starsContainer = document.querySelector('.stars');
