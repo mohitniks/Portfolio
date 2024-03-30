@@ -34,31 +34,17 @@
 
   .moon {
     position: relative;
-    width: 2000px;
-    height: 200px;
-    top: 10%; /* Adjusted position for desktop */
+    width: 150px;
+    height: 150px;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     animation: revolving 10s infinite linear;
     z-index: 1;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 0 0 20px 10px #ffbd60, inset 0 0 20px 10px #f89f32;
+    box-shadow: 0 0 20px 10px #ffbd60, inset 0 0 20px 10px #f89f32; /* Added box-shadow for glowing effect */
     margin-top: 5%;
-}
-
-@media screen and (max-width: 768px) {
-    /* Adjusted position for tablets */
-    .moon {
-        top: 15%; /* Move the moon downwards */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    /* Adjusted position for mobile */
-    .moon {
-        top: 20%; /* Move the moon further downwards */
-    }
 }
 
 .moon-image {
