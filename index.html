@@ -569,8 +569,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     skillContainers.forEach(container => {
         container.addEventListener('scroll', function() {
             // Check if the container has reached the bottom
-            if (container.scrollHeight - container.scrollTop === container.clientHeight) {
-                // Reached the bottom, stop propagation to allow page scrolling
+            if (container.scrollHeight - container.scrollTop <= container.clientHeight) {
+                // Reached or passed the bottom, allow page scrolling
                 container.style.overflowY = 'hidden';
             } else {
                 // Not at the bottom, continue normal scrolling within container
