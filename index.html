@@ -327,6 +327,52 @@
         font-size: 45px;
     }
 }
+
+  .social-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 768px) {
+  .social-icons {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .social-icon {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .social-icons {
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  .social-icon {
+    font-size: 18px;
+    margin-left: 6px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -352,6 +398,14 @@
   MOHIT NIKHADE
 </div>
 <div class="typing-text" id="typingText"></div>
+<div class="social-icons">
+  <a href="https://www.instagram.com/mohit_nikhade_14" class="social-icon" target="_blank"><i class="fa fa-instagram"></i></a>
+  <a href="https://www.linkedin.com/in/mohit-nikhade" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
+  <a href="https://github.com/MohitNikhade" class="social-icon" target="_blank"><i class="fa fa-github"></i></a>
+  <a href="mailto:mohitnikhade14@google.com" class="social-icon" target="_blank"><i class="fa fa-envelope"></i></a>
+  <a href="https://twitter.com/Mohit_Nikhade" class="social-icon" target="_blank"><i class="fa fa-twitter"></i></a>
+</div>
+
 
 
 <div id="about" class="section">
@@ -526,6 +580,31 @@ type();
     star.style.animationDelay = `${Math.random() * 5}s`;
     starsContainer.appendChild(star);
   }
+
+  // Fade in social icons on scroll
+window.addEventListener('scroll', () => {
+  const socialIcons = document.querySelector('.social-icons');
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition > 100) {
+    socialIcons.style.opacity = '1';
+  } else {
+    socialIcons.style.opacity = '0';
+  }
+});
+
+// Fade in social icons on hover
+const socialIconLinks = document.querySelectorAll('.social-icon');
+socialIconLinks.forEach((link) => {
+  link.addEventListener('mouseenter', () => {
+    link.style.opacity = '1';
+  });
+
+  link.addEventListener('mouseleave', () => {
+    link.style.opacity = '0.5';
+  });
+});
+
 </script>
 </body>
 </html>
