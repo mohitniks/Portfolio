@@ -588,28 +588,17 @@ type();
   }
 
   // Fade in social icons on scroll
-window.addEventListener('scroll', () => {
-  const socialIcons = document.querySelector('.social-icons');
-  const scrollPosition = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const socialIconsContainer = document.querySelector('.social-icons-container');
+    const scrollPosition = window.scrollY;
 
-  if (scrollPosition > 100) {
-    socialIcons.style.opacity = '1';
-  } else {
-    socialIcons.style.opacity = '0';
-  }
-});
-
-// Fade in social icons on hover
-const socialIconLinks = document.querySelectorAll('.social-icon');
-socialIconLinks.forEach((link) => {
-  link.addEventListener('mouseenter', () => {
-    link.style.opacity = '1';
+    if (scrollPosition > 100) {
+      socialIconsContainer.style.opacity = '1';
+    } else {
+      socialIconsContainer.style.opacity = '0';
+    }
   });
 
-  link.addEventListener('mouseleave', () => {
-    link.style.opacity = '0.5';
-  });
-});
 
 </script>
 </body>
