@@ -149,24 +149,40 @@
 .nav {
     position: fixed;
     top: 20px;
-    left: 50%; /* Center the navigation horizontally */
-    transform: translateX(-50%); /* Adjust to center perfectly */
-    z-index: 999;
+    width: 100%;
     text-align: center;
     white-space: nowrap; /* Prevent line breaks */
     overflow-x: auto; /* Enable horizontal scrolling if needed */
 }
 
 .nav a {
+    display: inline-block;
+    padding: 10px 20px;
     color: #fff;
     text-decoration: none;
-    margin: 0 10px; /* Add margin between links */
     font-size: 18px;
     font-weight: bold;
-    display: inline-block; /* Ensure each link is on its own line */
     border: 2px solid #888;
     border-radius: 5px;
-    padding: 2px;
+    margin: 0 5px; /* Add margin between links */
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust styles for tablets */
+    .nav a {
+        font-size: 16px;
+        padding: 8px 16px;
+        margin: 0 3px; /* Add margin between links */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Adjust styles for mobile */
+    .nav a {
+        font-size: 14px;
+        padding: 6px 12px;
+        margin: 0 2px; /* Add margin between links */
+    }
 }
 
 /* Custom font style */
