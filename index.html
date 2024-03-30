@@ -563,19 +563,20 @@ type();
     starsContainer.appendChild(star);
   }
 
-  const skillContainers = document.querySelectorAll('.skill-container');
+window.addEventListener('DOMContentLoaded', (event) => {
+    const skillContainers = document.querySelectorAll('.skill-container');
 
-// Add event listener for scroll on each skill container
-skillContainers.forEach(container => {
-    container.addEventListener('scroll', function(event) {
-        // Check if the container has reached the bottom
-        if (container.scrollHeight - container.scrollTop === container.clientHeight) {
-            // If reached bottom, prevent further scroll on container
-            container.style.overflowY = 'hidden';
-        } else {
-            // If not reached bottom, allow scrolling on container
-            container.style.overflowY = 'auto';
-        }
+    skillContainers.forEach(container => {
+        container.addEventListener('scroll', function() {
+            // Check if the container has reached the bottom
+            if (container.scrollHeight - container.scrollTop === container.clientHeight) {
+                // Reached the bottom, stop propagation to allow page scrolling
+                container.style.overflowY = 'hidden';
+            } else {
+                // Not at the bottom, continue normal scrolling within container
+                container.style.overflowY = 'auto';
+            }
+        });
     });
 });
 </script>
