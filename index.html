@@ -328,54 +328,42 @@
     }
 }
 
-  .social-icons-container {
-  position: fixed;
-  bottom: calc(50% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
+    .social-icons-container {
+    position: fixed;
+    bottom: calc(50% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icon {
-  color: #fff;
-  font-size: 24px;
-  margin: 0 5px;
-  text-decoration: none;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.social-icon:hover {
-  transform: scale(1.2);
-}
-
-@media screen and (max-width: 768px) {
-  .social-icons-container {
-    bottom: calc(50% + 2px);
+  .social-icons {
+    display: flex;
+    justify-content: center;
   }
 
   .social-icon {
-    font-size: 20px;
-    margin: 0 4px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .social-icons-container {
-    bottom: calc(50% + 1px);
+    color: #fff;
+    font-size: 24px;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: transform 0.3s, opacity 0.3s;
   }
 
-  .social-icon {
-    font-size: 18px;
-    margin: 0 3px;
+  .social-icon:hover {
+    transform: scale(1.2);
   }
-}
+
+  @media screen and (max-width: 768px) {
+    /* Media queries for smaller screens */
+    /* Adjust styles as needed */
+  }
+
+  @media screen and (max-width: 480px) {
+    /* Media queries for smaller screens */
+    /* Adjust styles as needed */
+  }
 
 </style>
 </head>
@@ -591,12 +579,9 @@ type();
   window.addEventListener('scroll', () => {
     const socialIconsContainer = document.querySelector('.social-icons-container');
     const scrollPosition = window.scrollY;
+    const opacity = 1 - (scrollPosition / 500); // Adjust 500 as needed for the scroll distance
 
-    if (scrollPosition > 100) {
-      socialIconsContainer.style.opacity = '1';
-    } else {
-      socialIconsContainer.style.opacity = '0';
-    }
+    socialIconsContainer.style.opacity = opacity > 0 ? opacity : 0;
   });
 
 
