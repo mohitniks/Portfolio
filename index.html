@@ -180,6 +180,21 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust font size for tablets */
+    .unique-font {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Adjust font size for mobile */
+    .unique-font {
+        font-size: 45px;
+    }
 }
 
 /* Skill symbols */
@@ -304,7 +319,7 @@
 </div>
 <div class="moon">
     <div class="moon-image">
-        <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
+        <img src="moon-480.png" alt="Moon Image">
     </div>
 </div>
 
