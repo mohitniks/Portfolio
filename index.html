@@ -236,7 +236,6 @@
         bottom: calc(50% + 8px); /* Adjust as needed */
         font-weight: bolder;
         font-family: Elephant;
-        text-decoration: underline;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -299,25 +298,24 @@
 /* Adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .skill-container {
-        /* Width and margin adjustments for smaller screens */
-        width: 100%; /* Full width on smaller screens */
+        width: calc(100% / 2 - 20px); /* Adjusted width for 2 containers per row with margin */
         height: auto; /* Adjust height dynamically */
-        margin-bottom: 20px; /* Add some space between containers */
+        margin: 10px; /* Added margin for spacing */
+        padding: 20px; /* Increased padding for more space */
+        text-align: center; /* Center align text */
+        border-radius: 10px; /* Added border radius for rounded corners */
+        background-color: rgba(255, 255, 255, 0.1); /* Added background color with opacity */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Added box shadow for depth effect */
+        transition: transform 0.3s ease; /* Added transition for hover effect */
     }
-    
-    .skill-container h3 {
-        font-size: 24px; /* Reduce heading font size */
+    .skill-container:hover {
+        transform: scale(1.05); /* Increased scale on hover for zoom effect */
     }
-    
     .skill-container p {
-        font-size: 18px; /* Reduce paragraph font size */
-    }
-    
-    .skill-symbol img {
-        max-height: 20px; /* Reduce image size */
-        max-width: 20px; /* Reduce image size */
+        margin-top: 20px; /* Increased margin between heading and paragraphs */
     }
 }
+
 
   .skill-symbol {
     font-size: 24px; /* Set the desired font size */
