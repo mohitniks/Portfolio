@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Portfolio Website</title>
 <style>
+  /* Common styles */
   body {
     margin: 0;
     padding: 0;
@@ -14,283 +15,56 @@
     font-family: Arial, sans-serif;
   }
 
-  .stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .star {
-    position: absolute;
-    background-color: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: twinkling 5s infinite;
-    box-shadow: 0 0 5px 2px #fff; /* Added box-shadow for twinkling effect */
-  }
-
-  .moon {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: revolving 10s infinite linear;
-    z-index: 1;
-    overflow: hidden;
-    border-radius: 50%;
-    box-shadow: 0 0 20px 10px #fff, inset 0 0 20px 10px #fff; /* Added box-shadow for glowing effect */
-    margin-top: 5%;
-}
-
-.moon-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.moon-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-@keyframes revolving {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    100% { transform: translateX(-50%) rotate(360deg); }
-}
-
-@media screen and (max-width: 768px) {
-    .moon{
-        margin-top: 10%;
-    }
-}
-
-
-  .astronaut {
-    display: none; /* Hide the astronaut on smaller screens */
-}
-
-.typing-text {
-    font-size: 24px;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    text-align: center; /* Center the typing text */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflow */
-    border-right: 2px solid white; /* Typing cursor */
-    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@media screen and (max-width: 768px) {
-    .typing-text {
-        font-size: 18px; /* Adjust font size for smaller screens */
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .typing-text {
-        font-size: 14px; /* Further adjust font size for smaller screens */
-    }
-}
-
-
-/* Blinking cursor animation */
-@keyframes blink-caret {
-    from, to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: white;
-    }
-}
-
-/* Typing animation */
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-
-
-
   .container {
     padding: 20px;
     text-align: center;
   }
 
   .section {
-    padding: 50px 0; /* Reduced padding for sections */
-    margin-top: 100vh;
+    padding: 100px 0;
   }
 
   .nav {
     position: fixed;
     top: 20px;
-    left: 0;
-    right: 0; /* Center the navigation horizontally */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999;
     text-align: center;
-    white-space: nowrap; /* Prevent line breaks */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-}
-
-.nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px; /* Add margin between links */
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block; /* Ensure each link is on its own line */
-    padding: 10px; /* Increased padding for better touch target */
-}
-
-@media screen and (max-width: 768px) {
-    .nav {
-        top: 10px;
-    }
-  
-    .nav a {
-        margin: 0 5px; /* Reduce margin between links */
-        font-size: 16px; /* Decrease font size for smaller screens */
-    }
-}
-  
-  /* Custom font style */
-  .unique-font {
-    font-family: 'Stencil', cursive;
-    font-size: 48px; /* Adjusted font size for smaller screens */
-    color: transparent;
-    -webkit-text-stroke: 2px #d2d2d2;
-    text-align: center; /* Center the text */
-    margin-top: 20px; /* Increased margin for better spacing */
-}
-
-@media screen and (max-width: 768px) {
-    .unique-font {
-        font-size: 32px; /* Further adjust font size for smaller screens */
-    }
-}
-
-  
-  /* Skill symbols */
-  .skill-symbol {
-    font-size: 16px; /* Adjusted font size for smaller screens */
-    margin-right: 5px;
+    white-space: nowrap;
+    overflow-x: auto;
   }
 
-  .skill-container h3 {
-    font-size: 18px; /* Set the font size for headings */
-    text-decoration: underline; /* Add underline */
-    text-align: center;
-    font-weight: bolder;
-    font-family: Elephant;
-    border: 2px solid #fff; /* Set the border color */
-}
-
-/* Skill containers */
-.skill-container {
-    width: 100%; /* Adjusted width for full width on smaller screens */
-    border: 2px solid #fff;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-bottom: 20px; /* Increased margin for better spacing */
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
     font-size: 18px;
-    line-height: 1.5; /* Adjust the line height as needed */
-    position: relative; /* Ensure position for pseudo-elements */
-}
+    font-weight: bold;
+    display: inline-block;
+    border: 2px solid #888;
+    border-radius: 5px;
+    padding: 2px;
+  }
 
-.skill-container::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
-}
-
-.skill-container::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Track color */
-}
-
-.skill-container::-webkit-scrollbar-thumb {
-    background: #888; /* Thumb color */
-    border-radius: 5px; /* Roundness of the thumb */
-}
-
-.skill-container::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Thumb color on hover */
-}
-
-/* Adjustments for smaller screens */
-@media screen and (max-width: 768px) {
+  /* Responsive styles */
+  @media only screen and (max-width: 768px) {
     .skill-container {
-        max-height: 30vh; /* Limit the height to make them scrollable */
-        overflow-y: auto; /* Enable vertical scrolling */
-        overflow-x: auto;
-        border-radius: 5px; /* Add border radius for rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth effect */
-        background-color: #333; /* Add background color */
-        padding: 6px; /* Add padding for spacing */
-        margin: 0 10px 20px 0; /* Adding margin between containers */
+      width: calc(100% - 40px);
+      margin: 0 auto 20px auto;
     }
-    
-    .skill-container h3 {
-        font-size: 16px; /* Adjust font size of heading */
-        margin: 3px 0; /* Adjust margin for better spacing */
+  }
+
+  @media only screen and (max-width: 480px) {
+    .section {
+      padding: 50px 0;
     }
-    
-    .skill-container p {
-        font-size: 14px; /* Adjust font size of paragraphs */
-        margin: 3px 0; /* Adjust margin for better spacing */
+
+    .skill-container {
+      width: calc(100% - 20px);
+      margin: 0 auto 20px auto;
     }
-    
-    .skill-symbol img {
-        max-height: 16px; /* Adjust image size */
-        max-width: 16px;
-        margin-right: 3px; /* Add spacing between image and text */
-    }
-}
-
-
-  .skill-symbol {
-    font-size: 24px; /* Set the desired font size */
-    display: inline-flex; /* Ensures the <img> is treated as an inline element */
-    align-items: center; /* Aligns the content of the container vertically */
-}
-
-.skill-symbol img {
-    font-size: inherit; /* Inherits the font size from the parent (.skill-symbol) */
-    max-height: 25%; /* Ensures the icon does not exceed the height of the text */
-    max-width: 25%; /* Ensures the icon does not exceed the width of the text */
-}
-
-/* Within the CSS */
-.skill-symbol1 {
-    font-size: 24px; /* Set the desired font size */
-    display: inline-flex; /* Ensures the <img> is treated as an inline element */
-    align-items: center; /* Aligns the content of the container vertically */
-    margin-top: 10px;
-}
-
-.skill-symbol1 img {
-    font-size: inherit;
-    max-height: 25%; /* Ensures the icon does not exceed the height of the text */
-    max-width: 25%; /* Ensures the icon does not exceed the width of the text */
-    margin-top: 5px; /* Adjust the margin between the icon and text */
-}
+  }
 </style>
 </head>
 <body>
@@ -300,21 +74,23 @@
   <a href="#projects">PROJECTS</a>
   <a href="#contact">CONTACT</a>
 </div>
+
 <div class="stars">
-  <!-- Generate stars dynamically using JavaScript -->
+  <!-- Stars will be generated dynamically using JavaScript -->
 </div>
+
 <div class="moon">
     <div class="moon-image">
-        <img src="moon-480.png" alt="Moon Image">
+        <img src="E:/Porfolio/moon-480.png" alt="Moon Image">
     </div>
 </div>
 
-<!-- Container for MOHIT NIKHADE text -->
+<div class="astronaut"></div>
+
 <div class="unique-font" id="uniqueFont">
   MOHIT NIKHADE
 </div>
 <div class="typing-text" id="typingText"></div>
-
 
 <div id="about" class="section">
   <div class="container">
@@ -441,7 +217,6 @@
 </div>
 
 <script>
-
 const textElements = [
     "Full Stack Developer",
     "Data Science",
@@ -481,35 +256,15 @@ type();
 // Dynamically create stars
 const starsContainer = document.querySelector('.stars');
 for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.classList.add('star');
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.width = `${Math.random() * 3}px`;
-    star.style.height = star.style.width;
-    star.style.animationDelay = `${Math.random() * 5}s`;
-    starsContainer.appendChild(star);
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.left = `${Math.random() * 100}vw`;
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.width = `${Math.random() * 3}px`;
+  star.style.height = star.style.width;
+  star.style.animationDelay = `${Math.random() * 5}s`;
+  starsContainer.appendChild(star);
 }
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    const skillContainers = document.querySelectorAll('.skill-container');
-
-    skillContainers.forEach(container => {
-        container.addEventListener('scroll', function() {
-            // Calculate the distance from the bottom of the container
-            const distanceFromBottom = container.scrollHeight - (container.scrollTop + container.clientHeight);
-            
-            // Check if the container is at the bottom or beyond
-            if (distanceFromBottom <= 0) {
-                // At or beyond the bottom, hide the scrollbar
-                container.style.overflowY = 'hidden';
-            } else {
-                // Not at the bottom, show the scrollbar
-                container.style.overflowY = 'auto';
-            }
-        });
-    });
-});
 </script>
 </body>
-</html> 
+</html>
