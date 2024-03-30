@@ -328,21 +328,27 @@
     }
 }
 
-  .social-icons {
+  .social-icons-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: calc(50% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
   opacity: 0;
   transition: opacity 0.5s;
 }
 
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
 .social-icon {
   color: #fff;
   font-size: 24px;
-  margin-left: 10px;
+  margin: 0 5px;
   text-decoration: none;
-  transition: transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .social-icon:hover {
@@ -350,26 +356,24 @@
 }
 
 @media screen and (max-width: 768px) {
-  .social-icons {
-    bottom: 10px;
-    right: 10px;
+  .social-icons-container {
+    bottom: calc(50% + 2px);
   }
-  
+
   .social-icon {
     font-size: 20px;
-    margin-left: 8px;
+    margin: 0 4px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .social-icons {
-    bottom: 5px;
-    right: 5px;
+  .social-icons-container {
+    bottom: calc(50% + 1px);
   }
-  
+
   .social-icon {
     font-size: 18px;
-    margin-left: 6px;
+    margin: 0 3px;
   }
 }
 
@@ -398,12 +402,14 @@
   MOHIT NIKHADE
 </div>
 <div class="typing-text" id="typingText"></div>
-<div class="social-icons">
-  <a href="https://www.instagram.com/mohit_nikhade_14" class="social-icon" target="_blank"><i class="fa fa-instagram"></i></a>
-  <a href="https://www.linkedin.com/in/mohit-nikhade" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
-  <a href="https://github.com/MohitNikhade" class="social-icon" target="_blank"><i class="fa fa-github"></i></a>
-  <a href="mailto:mohitnikhade14@google.com" class="social-icon" target="_blank"><i class="fa fa-envelope"></i></a>
-  <a href="https://twitter.com/Mohit_Nikhade" class="social-icon" target="_blank"><i class="fa fa-twitter"></i></a>
+<div class="social-icons-container">
+  <div class="social-icons">
+    <a href="https://www.instagram.com/mohit_nikhade_14" class="social-icon" target="_blank"><i class="fa fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/mohit-nikhade" class="social-icon" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <a href="https://github.com/MohitNikhade" class="social-icon" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="mailto:mohitnikhade14@google.com" class="social-icon" target="_blank"><i class="fa fa-envelope"></i></a>
+    <a href="https://twitter.com/Mohit_Nikhade" class="social-icon" target="_blank"><i class="fa fa-twitter"></i></a>
+  </div>
 </div>
 
 
