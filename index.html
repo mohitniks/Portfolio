@@ -298,9 +298,11 @@
 /* Adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .skill-container {
-        width: calc(50% - 20px); /* Adjust width to fit two containers in one row with spacing */
+        font-size: 8px;
+        width: calc(40% - 20px); /* Adjust width to fit two containers in one row with spacing */
         max-height: 40vh; /* Limit the height to make them scrollable */
         overflow-y: auto; /* Enable vertical scrolling */
+        overflow-x: auto;
         border-radius: 10px; /* Add border radius for rounded corners */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth effect */
         background-color: #333; /* Add background color */
@@ -311,13 +313,13 @@
     
     .skill-container h3,
     .skill-container p {
-        font-size: 14px; /* Adjust font size of heading and paragraph */
+        font-size: 8px; /* Adjust font size of heading and paragraph */
         margin: 5px 0; /* Adjust margin for better spacing */
     }
     
     .skill-symbol img {
-        max-height: 16px; /* Adjust image size */
-        max-width: 16px;
+        max-height: 8px; /* Adjust image size */
+        max-width: 8px;
         margin-right: 5px; /* Add spacing between image and text */
     }
 }
