@@ -298,23 +298,41 @@
 /* Adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .skill-container {
-        width: calc(100% / 2 - 20px); /* Adjusted width for 2 containers per row with margin */
-        height: auto; /* Adjust height dynamically */
-        margin: 10px; /* Added margin for spacing */
-        padding: 20px; /* Increased padding for more space */
-        text-align: center; /* Center align text */
-        border-radius: 10px; /* Added border radius for rounded corners */
-        background-color: rgba(255, 255, 255, 0.1); /* Added background color with opacity */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Added box shadow for depth effect */
-        transition: transform 0.3s ease; /* Added transition for hover effect */
+        width: 90%; /* Adjust width to fit well on mobile screens */
+        max-height: 60vh; /* Limit the height to make them scrollable */
+        overflow-y: auto; /* Enable vertical scrolling */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth effect */
+        background-color: #333; /* Add background color */
+        padding: 20px; /* Add padding for spacing */
+        margin: 20px auto; /* Center the containers and add some space between them */
     }
-    .skill-container:hover {
-        transform: scale(1.05); /* Increased scale on hover for zoom effect */
+
+    .skill-container h3 {
+        color: #fff; /* Set heading text color */
+        text-align: center; /* Center align heading */
     }
+
     .skill-container p {
-        margin-top: 20px; /* Increased margin between heading and paragraphs */
+        color: #fff; /* Set paragraph text color */
+    }
+
+    .skill-symbol {
+        margin-right: 10px; /* Add margin between symbols */
+    }
+
+    .skill-symbol img {
+        max-height: 20px; /* Adjust image size */
+        max-width: 20px;
+        margin-right: 5px; /* Add spacing between image and text */
+    }
+
+    /* Add hover effect on symbols */
+    .skill-symbol:hover img {
+        transform: scale(1.2); /* Scale up image on hover */
     }
 }
+
 
 
   .skill-symbol {
