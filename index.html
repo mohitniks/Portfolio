@@ -388,28 +388,28 @@
     }
   }
 
-      .sparkle {
+  .flame {
         position: fixed;
-        width: 10px;
-        height: 10px;
-        background-color: white;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, #ffffff, #007bff); /* Blue gradient */
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999; /* Ensure it's above all other elements */
-        opacity: 0;
-        transition: opacity 0.3s;
+        opacity: 0.8;
+        mix-blend-mode: screen; /* Blend mode for glowing effect */
+        animation: flicker 0.1s infinite alternate; /* Flickering animation */
     }
 
-    /* Add animation for sparkling effect */
-    @keyframes sparkle {
+    @keyframes flicker {
         0% {
-            opacity: 1;
+            opacity: 0.8;
         }
         50% {
-            opacity: 0;
+            opacity: 0.5;
         }
         100% {
-            opacity: 1;
+            opacity: 0.8;
         }
     }
 
@@ -450,13 +450,7 @@
   </div>
 </div>
 
-<div class="sparkle" id="sparkle1"></div>
-<div class="sparkle" id="sparkle2"></div>
-<div class="sparkle" id="sparkle3"></div>
-<div class="sparkle" id="sparkle4"></div>
-<div class="sparkle" id="sparkle5"></div>
-
-
+<div class="flame" id="flame1"></div>
 
 <div id="about" class="section">
   <div class="container">
@@ -640,31 +634,14 @@ type();
     socialIconsContainer.style.opacity = opacity > 0 ? opacity : 0;
   });
 
-      // Track mouse movement
+         // Track mouse movement
     document.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        // Position sparkles around the mouse cursor
-        document.getElementById('sparkle1').style.left = `${mouseX}px`;
-        document.getElementById('sparkle1').style.top = `${mouseY}px`;
-
-        document.getElementById('sparkle2').style.left = `${mouseX - 5}px`;
-        document.getElementById('sparkle2').style.top = `${mouseY + 5}px`;
-
-        document.getElementById('sparkle3').style.left = `${mouseX + 5}px`;
-        document.getElementById('sparkle3').style.top = `${mouseY - 5}px`;
-
-        document.getElementById('sparkle4').style.left = `${mouseX + 10}px`;
-        document.getElementById('sparkle4').style.top = `${mouseY + 10}px`;
-
-        document.getElementById('sparkle5').style.left = `${mouseX - 10}px`;
-        document.getElementById('sparkle5').style.top = `${mouseY - 10}px`;
-
-        // Trigger the sparkling animation
-        document.querySelectorAll('.sparkle').forEach((sparkle) => {
-            sparkle.style.animation = 'sparkle 0.5s linear infinite';
-        });
+        // Position the flame around the mouse cursor
+        document.getElementById('flame1').style.left = `${mouseX}px`;
+        document.getElementById('flame1').style.top = `${mouseY}px`;
     });
 
 </script>
