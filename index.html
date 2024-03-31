@@ -232,8 +232,8 @@
 
 /* Skill containers */
 .skill-container {
-    width: calc(100% / 2 - 20px); /* Calculating width for 2 containers with margin */
-    height: 70vh;
+    width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
+    height: 50vh; /* Set height to 50% of the viewport height */
     border: 2px solid #fff;
     overflow-y: auto;
     overflow-x: hidden;
@@ -243,10 +243,35 @@
     padding: 10px;
     text-align: left;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 14px; /* Adjust the font size as needed */
     line-height: 1.5; /* Adjust the line height as needed */
     position: relative; /* Ensure position for pseudo-elements */
 }
+
+@media screen and (min-width: 768px) {
+    /* For tablets */
+    .skill-container {
+        width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
+        height: 50vh; /* Set height to 50% of the viewport height */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    /* For larger screens */
+    .skill-container {
+        width: calc(33.33% - 20px); /* Calculating width for 3 containers with margin */
+        height: 50vh; /* Set height to 50% of the viewport height */
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    /* For extra-large screens */
+    .skill-container {
+        width: calc(25% - 20px); /* Calculating width for 4 containers with margin */
+        height: 50vh; /* Set height to 50% of the viewport height */
+    }
+}
+
 
 .skill-container::-webkit-scrollbar {
     width: 5px; /* Width of the scrollbar */
@@ -291,19 +316,6 @@
     max-width: 25%; /* Ensures the icon does not exceed the width of the text */
     margin-top: 5px; /* Adjust the margin between the icon and text */
 }
-
-@media screen and (max-width: 768px) {
-    /* Adjust styles for tablets */
-    .skill-container {
-        width: calc(100% - 20px); /* Full width with margin */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    /* Adjust styles for mobile */
-    .skill-container {
-        width: calc(100% - 20px); /* Full width with margin */
-    }
 
     .section {
         padding: 50px 0; /* Reduce padding for sections */
