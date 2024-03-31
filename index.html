@@ -228,14 +228,12 @@
     font-weight: bolder;
     font-family: Elephant;
     border: 2px solid #fff; /* Set the border color */
-    border-radius: 5px;
-  background-color: #f89f32;
 }
 
 /* Skill containers */
 .skill-container {
     width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
-    height: 50vh; /* Set height to 50% of the viewport height */
+    height: 50vh; /* Set a fixed height for the containers */
     border: 2px solid #fff;
     overflow-y: auto;
     overflow-x: hidden;
@@ -245,42 +243,26 @@
     padding: 10px;
     text-align: left;
     font-weight: bold;
-    font-size: 14px; /* Adjust the font size as needed */
+    font-size: 16px; /* Set the font size for the content */
     line-height: 1.5; /* Adjust the line height as needed */
-    position: relative; /* Ensure position for pseudo-elements */
-    border-radius: 10px;
-    background-color: #03021d;
+    white-space: normal; /* Allow text to wrap */
 }
 
-@media screen and (min-width: 480px) {
-  .skill-container {
-    width: calc(45% - 18px)
-    height: 35vh;
-  }
-}
-  
-
-@media screen and (min-width: 768px) {
-    /* For tablets */
+@media screen and (max-width: 768px) {
+    /* Adjust styles for tablets */
     .skill-container {
-        width: calc(45% - 20px); /* Calculating width for 2 containers with margin */
-        height: 40vh; /* Set height to 50% of the viewport height */
+        width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
+        height: 50vh; /* Set a fixed height for the containers */
+        font-size: 14px; /* Set the font size for the content */
     }
 }
 
-@media screen and (min-width: 992px) {
-    /* For larger screens */
+@media screen and (max-width: 480px) {
+    /* Adjust styles for mobile */
     .skill-container {
-        width: calc(33.33% - 20px); /* Calculating width for 3 containers with margin */
-        height: 50vh; /* Set height to 50% of the viewport height */
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    /* For extra-large screens */
-    .skill-container {
-        width: calc(25% - 20px); /* Calculating width for 4 containers with margin */
-        height: 50vh; /* Set height to 50% of the viewport height */
+        width: calc(100% - 20px); /* Full width with margin */
+        height: 50vh; /* Set a fixed height for the containers */
+        font-size: 12px; /* Set the font size for the content */
     }
 }
 
@@ -314,50 +296,6 @@
     max-width: 25%; /* Ensures the icon does not exceed the width of the text */
 }
 
-  @media screen and (min-width: 480px) {
-  .skill-symbol {
-    font-size: 4px;
-  }
-    .skill-symbol img {
-      max-height: 4px;
-      max-width: 4px;
-    }
-}
-  
-
-@media screen and (min-width: 768px) {
-    /* For tablets */
-    .skill-symbol {
-        font-size: 8px;
-    }
-  .skill-symbol img {
-    max-height: 8px;
-    max-width: 8px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-    /* For larger screens */
-    .skill-symbol {
-      font-size: 24px;
-    }
-  skill-symbol img {
-    max-height: 16px;
-    max-width: 16px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-    /* For extra-large screens */
-    .skill-symbol {
-        font-size: 32px;
-    }
-  .skill-symbol img {
-    max-height: 32px;
-    max-width: 32px;
-  }
-}
-
 /* Within the CSS */
 .skill-symbol1 {
     font-size: 24px; /* Set the desired font size */
@@ -372,6 +310,19 @@
     max-width: 25%; /* Ensures the icon does not exceed the width of the text */
     margin-top: 5px; /* Adjust the margin between the icon and text */
 }
+
+@media screen and (max-width: 768px) {
+    /* Adjust styles for tablets */
+    .skill-container {
+        width: calc(100% - 20px); /* Full width with margin */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Adjust styles for mobile */
+    .skill-container {
+        width: calc(100% - 20px); /* Full width with margin */
+    }
 
     .section {
         padding: 50px 0; /* Reduce padding for sections */
