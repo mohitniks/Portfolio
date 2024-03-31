@@ -388,30 +388,36 @@
     }
   }
 
-  .flame {
-        position: fixed;
+      .flame {
+        position: absolute;
         width: 20px;
         height: 20px;
-        background: radial-gradient(circle, #ffffff, #007bff); /* Blue gradient */
+        background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* White gradient */
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999; /* Ensure it's above all other elements */
-        opacity: 0.8;
-        mix-blend-mode: screen; /* Blend mode for glowing effect */
+        opacity: 1;
         animation: flicker 0.1s infinite alternate; /* Flickering animation */
     }
 
     @keyframes flicker {
         0% {
-            opacity: 0.8;
+            opacity: 1;
+            width: 20px;
+            height: 20px;
         }
         50% {
             opacity: 0.5;
+            width: 30px;
+            height: 30px;
         }
         100% {
-            opacity: 0.8;
+            opacity: 0;
+            width: 40px;
+            height: 40px;
         }
     }
+
 
   
 
@@ -625,24 +631,40 @@ type();
     starsContainer.appendChild(star);
   }
 
-  // Fade in social icons on scroll
-  window.addEventListener('scroll', () => {
-    const socialIconsContainer = document.querySelector('.social-icons-container');
-    const scrollPosition = window.scrollY;
-    const opacity = 1 - (scrollPosition / 500); // Adjust 500 as needed for the scroll distance
+      const flames = [];
 
-    socialIconsContainer.style.opacity = opacity > 0 ? opacity : 0;
-  });
+    function createFlame(x, y) {
+        const flame = document.createElement('div');
+        flame.classList.add('flame');
+        flame.style.left = `${x}px`;
+        flame.style.top = `${y}px`;
+        document.body.appendChild(flame);
+        flames.push(flame);
 
-         // Track mouse movement
+        // Remove flame after animation ends
+        flame.addEventListener('animationend', () => {
+            flame.remove();
+            flames.splice(flames.indexOf(flame), 1);
+        });
+    }
+
     document.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        // Position the flame around the mouse cursor
-        document.getElementById('flame1').style.left = `${mouseX}px`;
-        document.getElementById('flame1').style.top = `${mouseY}px`;
+        createFlame(mouseX, mouseY);
     });
+
+    // Update flame positions
+    function updateFlames() {
+        flames.forEach((flame) => {
+            flame.style.left = `${parseInt(flame.style.left, 10) + Math.random() * 2 - 1}px`;
+            flame.style.top = `${parseInt(flame.style.top, 10) + Math.random() * 2 - 1}px`;
+        });
+        requestAnimationFrame(updateFlames);
+    }
+
+    updateFlames();
 
 </script>
 </body>
