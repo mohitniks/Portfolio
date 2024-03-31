@@ -388,38 +388,68 @@
     }
   }
 
-      .flame {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* White gradient */
+          .flame {
+        position: fixed;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 40px solid #007bff; /* Blue flame color */
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999; /* Ensure it's above all other elements */
-        opacity: 1;
-        animation: flicker 0.1s infinite alternate; /* Flickering animation */
+        opacity: 0.8;
+        animation: flame 0.5s infinite linear; /* Flame animation */
     }
 
-    @keyframes flicker {
+    @keyframes flame {
         0% {
             opacity: 1;
-            width: 20px;
-            height: 20px;
-        }
-        50% {
-            opacity: 0.5;
-            width: 30px;
-            height: 30px;
+            transform: translateY(0) scale(1);
         }
         100% {
             opacity: 0;
-            width: 40px;
-            height: 40px;
+            transform: translateY(-20px) scale(0.5);
         }
     }
 
+    /* Create a tail effect */
+    .flame::before,
+    .flame::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 20px solid #007bff; /* Blue flame color */
+        border-radius: 50%;
+        opacity: 0.4;
+        animation: tail 0.5s infinite linear; /* Tail animation */
+    }
 
-  
+    .flame::before {
+        left: -5px;
+        transform: rotate(-45deg);
+    }
+
+    .flame::after {
+        right: -5px;
+        transform: rotate(45deg);
+    }
+
+    @keyframes tail {
+        0% {
+            opacity: 0.4;
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.5);
+        }
+    }
+
 
 </style>
 </head>
@@ -456,7 +486,7 @@
   </div>
 </div>
 
-<div class="flame" id="flame1"></div>
+<div class="flame"></div>
 
 <div id="about" class="section">
   <div class="container">
@@ -631,40 +661,15 @@ type();
     starsContainer.appendChild(star);
   }
 
-      const flames = [];
-
-    function createFlame(x, y) {
-        const flame = document.createElement('div');
-        flame.classList.add('flame');
-        flame.style.left = `${x}px`;
-        flame.style.top = `${y}px`;
-        document.body.appendChild(flame);
-        flames.push(flame);
-
-        // Remove flame after animation ends
-        flame.addEventListener('animationend', () => {
-            flame.remove();
-            flames.splice(flames.indexOf(flame), 1);
-        });
-    }
-
+    // Track mouse movement
     document.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        createFlame(mouseX, mouseY);
+        // Position the flame around the mouse cursor
+        document.querySelector('.flame').style.left = `${mouseX}px`;
+        document.querySelector('.flame').style.top = `${mouseY}px`;
     });
-
-    // Update flame positions
-    function updateFlames() {
-        flames.forEach((flame) => {
-            flame.style.left = `${parseInt(flame.style.left, 10) + Math.random() * 2 - 1}px`;
-            flame.style.top = `${parseInt(flame.style.top, 10) + Math.random() * 2 - 1}px`;
-        });
-        requestAnimationFrame(updateFlames);
-    }
-
-    updateFlames();
 
 </script>
 </body>
