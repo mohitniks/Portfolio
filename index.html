@@ -314,6 +314,50 @@
     max-width: 25%; /* Ensures the icon does not exceed the width of the text */
 }
 
+  @media screen and (min-width: 480px) {
+  .skill-symbol {
+    font-size: 8px;
+  }
+    .skill-symbol img {
+      max-height: 8px;
+      max-width: 8px;
+    }
+}
+  
+
+@media screen and (min-width: 768px) {
+    /* For tablets */
+    .skill-symbol {
+        font-size: 12px;
+    }
+  .skill-symbol img {
+    max-height: 12px;
+    max-width: 12px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+    /* For larger screens */
+    .skill-symbol {
+      font-size: 24px;
+    }
+  skill-symbol img {
+    max-height: 24px;
+    max-width: 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+    /* For extra-large screens */
+    .skill-symbol {
+        font-size: 32px;
+    }
+  .skill-symbol img {
+    max-height: 32px;
+    max-width: 32px;
+  }
+}
+
 /* Within the CSS */
 .skill-symbol1 {
     font-size: 24px; /* Set the desired font size */
@@ -484,7 +528,7 @@
           <span class="skill-symbol"><img src="darts-480.png" alt="Darts Icon">&nbsp;&nbsp;Darts</span>
           <span class="skill-symbol"><img src="kats-480.png" alt="Kats Icon">&nbsp;&nbsp;Kats</span>
           <span class="skill-symbol"><img src="autots-480.png" alt="AutoTs Icon">&nbsp;&nbsp;AutoTs</span>
-          <span class="skill-symbol1"><img src="sktime-480.png" alt="Sktime Icon">&nbsp;&nbsp;Sktime</span>
+          <span class="skill-symbol"><img src="sktime-480.png" alt="Sktime Icon">&nbsp;&nbsp;Sktime</span>
           <span class="skill-symbol"><img src="python-480.png" alt="LSTM Icon">&nbsp;&nbsp;LSTM</span>
           <span class="skill-symbol"><img src="xgboost-480.png" alt="XGBoost Icon">&nbsp;&nbsp;XGBoost</span>
         </p>
