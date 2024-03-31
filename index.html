@@ -251,11 +251,12 @@
 @media screen and (max-width: 768px) {
     /* Adjust styles for tablets */
     .skill-container {
-        width: 45%; /* Set the width to 45% for two containers in one row */
+        width: 30%; /* Set the width to 45% for two containers in one row */
         height: 50vh; /* Set the height to 25vh */
         line-height: 14px; /* Set the line height for the content */
-        padding: 0; /* Remove padding */
         margin: 0; /* Remove margin */
+        padding-right: 12px; /* Remove padding */
+        padding-left: 12px;
         border: none; /* Remove border */
         display: inline-block; /* Ensure inline block display */
         overflow: auto; /* Hide overflow */
@@ -264,8 +265,11 @@
     .skill-container h3 {
         font-size: 16px; /* Set the font size for the headings */
         margin: 0; /* Remove margin */
-        padding: 0; /* Remove padding */
+        padding: 4px; /* Remove padding */
         text-decoration: none; /* Remove underline */
+        border: 1px solid #fff;
+        border-radius: 5px;
+        background-color: #f89f32
     }
 
     .skill-symbol {
@@ -297,10 +301,11 @@
     .skill-container h3 {
         font-size: 8px; /* Set the font size for the headings */
         margin: 0; /* Remove margin */
-        padding: 0; /* Remove padding */
+        padding: 2px; /* Remove padding */
         text-decoration: none; /* Remove underline */
         border: 1px solid #fff;
         border-radius: 5px;
+        background-color: #f89f32
     }
 
     .skill-symbol {
@@ -312,13 +317,17 @@
         max-height: 6px; /* Set the max height for images */
         max-width: 6px; /* Set the max width for images */
         margin-right: 2px; /* Add a small margin between images */
-      padding: 2px;
+        padding: 2px;
     }
 
 
-      .skill-container p span {
+    .skill-container p span {
         font-size: 12px; /* Set font size for text */
         padding: 2px;
+    }
+
+    .skill-container::-webkit-scrollbar {
+        width: 0; /* Hide the scrollbar */
     }
 }
 
@@ -350,6 +359,10 @@
     font-size: inherit; /* Inherits the font size from the parent (.skill-symbol) */
     max-height: 25%; /* Ensures the icon does not exceed the height of the text */
     max-width: 25%; /* Ensures the icon does not exceed the width of the text */
+}
+
+.skill-container::-webkit-scrollbar {
+    width: 0; /* Hide the scrollbar */
 }
 
 /* Within the CSS */
