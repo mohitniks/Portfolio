@@ -12,6 +12,7 @@
     background-color: #000;
     color: #fff;
     font-family: Arial, sans-serif;
+    cursor: none;
   }
 
   .stars {
@@ -387,35 +388,32 @@
     }
   }
 
-  .social-icon {
-  /* Existing styles */
-  position: relative;
-}
+      .sparkle {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999; /* Ensure it's above all other elements */
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
 
-.social-icon::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  opacity: 0;
-  animation: spark 1s ease-in-out infinite;
-  z-index: -1;
-}
+    /* Add animation for sparkling effect */
+    @keyframes sparkle {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 
-@keyframes spark {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
+  
 
 </style>
 </head>
@@ -451,6 +449,12 @@
     <a href="https://twitter.com/Mohit_Nikhade" class="social-icon" target="_blank"><i class="fa fa-twitter"></i></a>
   </div>
 </div>
+
+<div class="sparkle" id="sparkle1"></div>
+<div class="sparkle" id="sparkle2"></div>
+<div class="sparkle" id="sparkle3"></div>
+<div class="sparkle" id="sparkle4"></div>
+<div class="sparkle" id="sparkle5"></div>
 
 
 
@@ -636,6 +640,32 @@ type();
     socialIconsContainer.style.opacity = opacity > 0 ? opacity : 0;
   });
 
+      // Track mouse movement
+    document.addEventListener('mousemove', (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        // Position sparkles around the mouse cursor
+        document.getElementById('sparkle1').style.left = `${mouseX}px`;
+        document.getElementById('sparkle1').style.top = `${mouseY}px`;
+
+        document.getElementById('sparkle2').style.left = `${mouseX - 5}px`;
+        document.getElementById('sparkle2').style.top = `${mouseY + 5}px`;
+
+        document.getElementById('sparkle3').style.left = `${mouseX + 5}px`;
+        document.getElementById('sparkle3').style.top = `${mouseY - 5}px`;
+
+        document.getElementById('sparkle4').style.left = `${mouseX + 10}px`;
+        document.getElementById('sparkle4').style.top = `${mouseY + 10}px`;
+
+        document.getElementById('sparkle5').style.left = `${mouseX - 10}px`;
+        document.getElementById('sparkle5').style.top = `${mouseY - 10}px`;
+
+        // Trigger the sparkling animation
+        document.querySelectorAll('.sparkle').forEach((sparkle) => {
+            sparkle.style.animation = 'sparkle 0.5s linear infinite';
+        });
+    });
 
 </script>
 </body>
