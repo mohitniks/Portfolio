@@ -228,6 +228,8 @@
     font-weight: bolder;
     font-family: Elephant;
     border: 2px solid #fff; /* Set the border color */
+    border-radius: 5px;
+  background-color: #f89f32;
 }
 
 /* Skill containers */
@@ -246,13 +248,23 @@
     font-size: 14px; /* Adjust the font size as needed */
     line-height: 1.5; /* Adjust the line height as needed */
     position: relative; /* Ensure position for pseudo-elements */
+    border-radius: 10px;
+    background-color: #03021d;
 }
+
+@media screen and (min-width: 480px) {
+  .skill-container {
+    width: calc(45% - 18px)
+    height: 35vh;
+  }
+}
+  
 
 @media screen and (min-width: 768px) {
     /* For tablets */
     .skill-container {
-        width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
-        height: 50vh; /* Set height to 50% of the viewport height */
+        width: calc(45% - 20px); /* Calculating width for 2 containers with margin */
+        height: 40vh; /* Set height to 50% of the viewport height */
     }
 }
 
