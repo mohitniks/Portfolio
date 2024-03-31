@@ -14,24 +14,6 @@
     font-family: Arial, sans-serif;
   }
 
-  .stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .star {
-    position: absolute;
-    background-color: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: twinkling 5s infinite;
-  }
-
   .moon {
     position: relative;
     width: 150px;
@@ -585,19 +567,6 @@ function erase() {
 
 // Start typing animation
 type();
-
-  // Dynamically create stars
-  const starsContainer = document.querySelector('.stars');
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.classList.add('star');
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.width = `${Math.random() * 3}px`;
-    star.style.height = star.style.width;
-    star.style.animationDelay = `${Math.random() * 5}s`;
-    starsContainer.appendChild(star);
-  }
 
   // Fade in social icons on scroll
   window.addEventListener('scroll', () => {
