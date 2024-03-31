@@ -251,18 +251,66 @@
 @media screen and (max-width: 768px) {
     /* Adjust styles for tablets */
     .skill-container {
-        width: calc(50% - 20px); /* Calculating width for 2 containers with margin */
-        height: 50vh; /* Set a fixed height for the containers */
+        width: 45%; /* Set the width to 45% for two containers in one row */
+        height: 50vh; /* Set the height to 25vh */
         font-size: 14px; /* Set the font size for the content */
+        line-height: 14px; /* Set the line height for the content */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        border: none; /* Remove border */
+        display: inline-block; /* Ensure inline block display */
+        overflow: hidden; /* Hide overflow */
+    }
+
+    .skill-container h3 {
+        font-size: 16px; /* Set the font size for the headings */
+        margin: 0; /* Remove margin */
+        padding: 0; /* Remove padding */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .skill-symbol {
+        font-size: 14px; /* Set the font size for the symbols */
+        margin-right: 2px; /* Add a small margin between symbols */
+    }
+
+    .skill-symbol img {
+        max-height: 14px; /* Set the max height for images */
+        max-width: 14px; /* Set the max width for images */
+        margin-right: 2px; /* Add a small margin between images */
     }
 }
 
 @media screen and (max-width: 480px) {
     /* Adjust styles for mobile */
     .skill-container {
-        width: calc(45% - 15px); /* Full width with margin */
-        height: 25vh; /* Set a fixed height for the containers */
+        width: 45%; /* Set the width to 45% for two containers in one row */
+        height: 25vh; /* Set the height to 25vh */
         font-size: 6px; /* Set the font size for the content */
+        line-height: 6px; /* Set the line height for the content */
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        border: none; /* Remove border */
+        display: inline-block; /* Ensure inline block display */
+        overflow: hidden; /* Hide overflow */
+    }
+
+    .skill-container h3 {
+        font-size: 6px; /* Set the font size for the headings */
+        margin: 0; /* Remove margin */
+        padding: 0; /* Remove padding */
+        text-decoration: none; /* Remove underline */
+    }
+
+    .skill-symbol {
+        font-size: 6px; /* Set the font size for the symbols */
+        margin-right: 2px; /* Add a small margin between symbols */
+    }
+
+    .skill-symbol img {
+        max-height: 6px; /* Set the max height for images */
+        max-width: 6px; /* Set the max width for images */
+        margin-right: 2px; /* Add a small margin between images */
     }
 }
 
